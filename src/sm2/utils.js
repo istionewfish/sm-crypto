@@ -102,10 +102,12 @@ function leftPad(input, num) {
  * 转成16进制串
  */
 function arrayToHex(arr) {
-  return arr.map(item => {
+  let hexStr = ''
+  arr.forEach(item => {
     item = item.toString(16)
-    return item.length === 1 ? '0' + item : item
-  }).join('')
+    hexStr += item.length === 1 ? '0' + item : item
+  })
+  return hexStr
 }
 
 /**
