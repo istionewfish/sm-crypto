@@ -324,6 +324,16 @@ class ECCurveFp {
         return null
     }
   }
+
+  /**
+   * 根据x和y坐标创建椭圆曲线点
+   * @param {BigInteger} x
+   * @param {BigInteger} y
+   * @returns
+   */
+  createPoint(x, y) {
+    return new ECPointFp(this, this.fromBigInteger(x), this.fromBigInteger(y))
+  }
 }
 
 module.exports = {

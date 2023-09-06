@@ -44,6 +44,18 @@ let decryptData = sm2.doDecrypt(encryptData, privateKey, cipherMode) // 解密�
 
 encryptData = sm2.doEncrypt(msgArray, publicKey, cipherMode) // 加密结果，输入数组
 decryptData = sm2.doDecrypt(encryptData, privateKey, cipherMode, {output: 'array'}) // 解密结果，输出数组
+
+/**
+ * ASN1序列格式的加密解密
+ */
+let publicKey = "0417C6193A31FA3772E7F83D7B1BEE40208BEBF0727ECB955F1D08C6BF29A798991DFA61CD82DFBDB966D64E2B00C4395C75A64011DDDD42FA25AFFD20F8FB7F11"
+let privateKey = "771AF63AF98B79DA3F27AF8B65F69B84D6C3D8C713977A87E022B06B256667BF"
+
+let encryptData = sm2.encrypt("Hello World! Welcome to the SM2 encryption for security system.", publicKey)
+console.log(encryptData)  // ASN1序列格式的密文没有04前缀
+let text = sm2.decrypt(encryptData, privateKey)
+console.log(text)
+
 ```
 
 > ps：密文会在解密时自动补充 `04`，如遇到其他工具补充的 `04` 需手动去除再传入。
